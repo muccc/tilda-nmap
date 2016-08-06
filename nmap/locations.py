@@ -48,6 +48,6 @@ locations = {
     "Stage-C-3": (130, 127),
     "Volunteers": (116, 138),
     "Workshop-1": (208, 47),
-    "Workshop-2": (110, 80)
+    "Workshop-2": (110, 80),
     "Workshop-3": (234, 98),
 }
