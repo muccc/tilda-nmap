@@ -2,7 +2,7 @@ bssids = {
     '9c:1c:12:74:d2:': "GreenRoom",
     '04:bd:88:1e:76:': "Stage-A-5",
     '04:bd:88:6c:1b:': "Stage-C-3",
-    '18:64:72:81:e3:': "Workshop",
+    '18:64:72:81:e3:': "Workshop-3",
     '18:64:72:81:e8:': "Bar",
     '24:de:c6:dd:36:': "DK-C2",
     '24:de:c6:dd:38:': "DK-D1",
