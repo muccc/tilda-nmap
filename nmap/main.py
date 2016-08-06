@@ -24,19 +24,35 @@ buttons.init()
 buttons.disable_menu_reset()
 
 showMap = 1
+
+ugfx.display_image(0,0,'apps/nmap/map.gif')
 while showMap:
-    apList = wifi.nic().list_aps()
+    try:
+        apList = wifi.nic().list_aps()
+    except OSError:
+        # was not able to get ap list,
+        # we will just try again
+	continue
+
+    # clear image before adding new data
+    ugfx.display_image(0,0,'apps/nmap/map.gif')
     for i in apList:
         # get the human readable version of the bssid
         bssid = ''
         for idx in range(5):
 	    bssid += str(hex(i['bssid'][idx])[2:4])
             bssid += ':'
-        bssid += str(hex(i['bssid'][5])[2:4])
         # plot circle on map
+        if bssid in bs.bssids:
+            # we might see non-aps, we don't look those up
+            location = bs.bssids[bssid]
+            displayX = loc.locations[location][0]
+            displayY = loc.locations[location][1]
+  
+            ugfx.circle(displayX, displayY, 10, ugfx.RED)
+
         
-    ugfx.text(10,10,bssid,ugfx.BLUE)
-    time.sleep(10)
+    time.sleep(5)
 
 
 
