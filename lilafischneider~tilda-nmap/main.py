@@ -1,5 +1,5 @@
 ### Author: lilafischneider
-### Description: Tool which shows visible EMFCamp WiFi access points on a map. By lilafischneider
+### Description: Tool which shows visible EMFCamp WiFi access points on a map. Let the badge connect to WiFi first or it might crash.
 ### Category: location
 ### License: MIT
 ### Appname: tilda-nmap
@@ -13,9 +13,6 @@ import time
 import network
 import wifi
 
-#import apps.lilafischneider~tilda-nmap.locations as loc
-#import apps.lilafischneider~tilda-nmap.bssids as bs
-
 loc = utils = __import__("apps/lilafischneider~tilda-nmap/locations")
 bs = utils = __import__("apps/lilafischneider~tilda-nmap/bssids")
 
@@ -25,7 +22,7 @@ ugfx.init()
 buttons.init()
 buttons.disable_menu_reset()
 
-showMap = 1
+showMap = True
 
 ugfx.display_image(0,0,'apps/lilafischneider~tilda-nmap/map.gif')
 while showMap:
@@ -59,8 +56,9 @@ while showMap:
                 ugfx.circle(displayX, displayY, diameter-1, ugfx.RED)
                 ugfx.circle(displayX, displayY, diameter, ugfx.RED)
 
-        
-    time.sleep(5)
-
-
+    for i in range(50):        
+        if buttons.is_pressed("BTN_MENU"):
+            showMap = False
+            break
+        time.sleep(.1)
 
