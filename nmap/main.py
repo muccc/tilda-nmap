@@ -16,7 +16,7 @@ import wifi
 import apps.nmap.locations as loc
 import apps.nmap.bssids as bs
 
-
+MAXDIAMETER = 10
 
 
 ugfx.init()
@@ -46,10 +46,14 @@ while showMap:
         if bssid in bs.bssids:
             # we might see non-aps, we don't look those up
             location = bs.bssids[bssid]
-            displayX = loc.locations[location][0]
-            displayY = loc.locations[location][1]
+  	    print(location)
+            if location in loc.locations:
+                displayX = loc.locations[location][0]
+                displayY = loc.locations[location][1]
+                diameter = int(-1 * (90./i['rssi']) * MAXDIAMETER)
   
-            ugfx.circle(displayX, displayY, 10, ugfx.RED)
+                ugfx.circle(displayX, displayY, diameter-1, ugfx.RED)
+                ugfx.circle(displayX, displayY, diameter, ugfx.RED)
 
         
     time.sleep(5)
