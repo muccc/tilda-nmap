@@ -1,2 +1,2 @@
 # tilda-nmap
-Gespatial Network Map for EMFCamp
+Geospatial Network Map for EMFCamp
