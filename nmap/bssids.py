@@ -1,4 +1,4 @@
-bssids = (
+bssids = {
     '9c:1c:12:74:d2:88': "GreenRoom",
     '9c:1c:12:74:d2:89': "GreenRoom",
     '9c:1c:12:74:d2:8a': "GreenRoom",
