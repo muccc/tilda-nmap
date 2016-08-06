@@ -13,11 +13,13 @@ import time
 import network
 import wifi
 
-import apps.nmap.locations as loc
-import apps.nmap.bssids as bs
+#import apps.lilafischneider~tilda-nmap.locations as loc
+#import apps.lilafischneider~tilda-nmap.bssids as bs
+
+loc = utils = __import__("apps/lilafischneider~tilda-nmap/locations")
+bs = utils = __import__("apps/lilafischneider~tilda-nmap/bssids")
 
 MAXDIAMETER = 10
-
 
 ugfx.init()
 buttons.init()
@@ -25,7 +27,7 @@ buttons.disable_menu_reset()
 
 showMap = 1
 
-ugfx.display_image(0,0,'apps/nmap/map.gif')
+ugfx.display_image(0,0,'apps/lilafischneider~tilda-nmap/map.gif')
 while showMap:
     try:
         apList = wifi.nic().list_aps()
@@ -35,7 +37,7 @@ while showMap:
         continue
 
     # clear image before adding new data
-    ugfx.display_image(0,0,'apps/nmap/map.gif')
+    ugfx.display_image(0,0,'apps/lilafischneider~tilda-nmap/map.gif')
     for i in apList:
         # get the human readable version of the bssid
         bssid = ''
