@@ -1,9 +1,9 @@
 ### Author: lilafischneider
-### Description: tilda nmap
+### Description: Tool which shows visible EMFCamp WiFi access points on a map. By lilafischneider
 ### Category: location
 ### License: MIT
 ### Appname: tilda-nmap
-### Built-in: yes
+### Built-in: no
 
 import pyb
 import math
@@ -32,7 +32,7 @@ while showMap:
     except OSError:
         # was not able to get ap list,
         # we will just try again
-	continue
+        continue
 
     # clear image before adding new data
     ugfx.display_image(0,0,'apps/nmap/map.gif')
@@ -40,17 +40,19 @@ while showMap:
         # get the human readable version of the bssid
         bssid = ''
         for idx in range(5):
-	    bssid += str(hex(i['bssid'][idx])[2:4])
+            bssid += str(hex(i['bssid'][idx])[2:4])
             bssid += ':'
         # plot circle on map
         if bssid in bs.bssids:
             # we might see non-aps, we don't look those up
             location = bs.bssids[bssid]
-  	    print(location)
+            print(location)
+
             if location in loc.locations:
                 displayX = loc.locations[location][0]
                 displayY = loc.locations[location][1]
                 diameter = int(-1 * (90./i['rssi']) * MAXDIAMETER)
+                print(i['rssi'], diameter)
   
                 ugfx.circle(displayX, displayY, diameter-1, ugfx.RED)
                 ugfx.circle(displayX, displayY, diameter, ugfx.RED)
